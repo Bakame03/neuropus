@@ -1,0 +1,3 @@
+node_modules/
+prototypes/pyodide/vendor/
+prototypes/pyodide/results.log

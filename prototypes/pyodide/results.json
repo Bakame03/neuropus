@@ -1,0 +1,653 @@
+{
+  "date": "2026-10-01T03:14:41.534Z",
+  "poids": [
+    {
+      "fichier": "pyodide.mjs",
+      "brutKo": 18,
+      "gzipKo": 7,
+      "brotliKo": 6
+    },
+    {
+      "fichier": "pyodide.asm.mjs",
+      "brutKo": 1221,
+      "gzipKo": 254,
+      "brotliKo": 203
+    },
+    {
+      "fichier": "pyodide.asm.wasm",
+      "brutKo": 9373,
+      "gzipKo": 3463,
+      "brotliKo": 2677
+    },
+    {
+      "fichier": "python_stdlib.zip",
+      "brutKo": 2486,
+      "gzipKo": 2444,
+      "brotliKo": 2429
+    },
+    {
+      "fichier": "pyodide-lock.json",
+      "brutKo": 116,
+      "gzipKo": 26,
+      "brotliKo": 21
+    },
+    {
+      "fichier": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "brutKo": 2891,
+      "gzipKo": 2856,
+      "brotliKo": 2846
+    },
+    {
+      "fichier": "TOTAL",
+      "brutKo": 16105,
+      "gzipKo": 9050,
+      "brotliKo": 8182
+    }
+  ],
+  "scenarios": [
+    {
+      "navigateur": "chromium",
+      "port": 8000,
+      "isolationOrigine": false,
+      "demarrageFroid": {
+        "loadPyodide": 2375.3999999910593,
+        "loadNumpy": 421.79999999701977,
+        "importNumpy": 588.9000000059605,
+        "total": 3427.1000000089407
+      },
+      "demarrageAvecCache": {
+        "loadPyodide": 2390.8999999910593,
+        "loadNumpy": 414.40000000596046,
+        "importNumpy": 571.7000000029802,
+        "total": 3404
+      },
+      "correction": {
+        "solution": {
+          "statut": "reussi",
+          "diagnostic": null,
+          "echecs": [],
+          "dureeMs": 64
+        },
+        "squelette": {
+          "statut": "echec",
+          "diagnostic": "w-jamais-mis-a-jour",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [0. 0.] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [0. 0.] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 9
+        },
+        "signeInverse": {
+          "statut": "echec",
+          "diagnostic": "signe-inverse",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [-0.25090793  0.5409796 ] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [1.56056043e+43 2.45530857e+43] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 23
+        },
+        "moyenneOubliee": {
+          "statut": "echec",
+          "diagnostic": "moyenne-oubliee",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 12.54539666 -27.04897981] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [nan nan] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 19
+        },
+        "facteur2Oublie": {
+          "statut": "echec",
+          "diagnostic": "facteur-2-oublie",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 0.12545397 -0.2704898 ] au lieu de [ 0.25090793 -0.5409796 ]"
+          ],
+          "dureeMs": 15
+        },
+        "erreurInconnue": {
+          "statut": "echec",
+          "diagnostic": null,
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 0.26090793 -0.5309796 ] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [ 2.05060358 -2.95804492] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 21
+        },
+        "fonctionAbsente": {
+          "statut": "echec",
+          "diagnostic": null,
+          "echecs": [
+            "test_renvoie_un_vecteur_de_la_bonne_forme : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'",
+            "test_premier_pas_correct : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'",
+            "test_converge_vers_la_solution : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'"
+          ],
+          "dureeMs": 4
+        }
+      },
+      "stdout": {
+        "statut": "ok",
+        "stdout": "bonjour\n2\n",
+        "erreur": null,
+        "dureeMs": 0.7000000029802322,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 1.0999999940395355
+      },
+      "erreurSyntaxe": {
+        "statut": "erreur",
+        "stdout": "",
+        "erreur": {
+          "type": "SyntaxError",
+          "message": "invalid syntax (<apprenant>, line 2)",
+          "ligne": 2
+        },
+        "dureeMs": 2.5,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 2.9000000059604645
+      },
+      "erreurExecution": {
+        "statut": "erreur",
+        "stdout": "",
+        "erreur": {
+          "type": "ZeroDivisionError",
+          "message": "division by zero",
+          "ligne": 3
+        },
+        "dureeMs": 1,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 1.4000000059604645
+      },
+      "reactivite": {
+        "frames": 181,
+        "maxGapMs": 16.800000000000182,
+        "dureePythonMs": 3001
+      },
+      "boucleInfinie": {
+        "statut": "interrompu",
+        "redemarrageMs": 5252.100000008941,
+        "arret": "terminate",
+        "totalMs": 7252.29999999702
+      },
+      "reutilisableApres": "encore là\n",
+      "boucleInfinieTerminate": {
+        "statut": "interrompu",
+        "redemarrageMs": 3474.1000000089407,
+        "arret": "terminate",
+        "totalMs": 5474.20000000298
+      },
+      "reutilisableApresTerminate": "encore là\n",
+      "calculNumpyLong": {
+        "statut": "interrompu",
+        "redemarrageMs": 3501.199999988079,
+        "arret": "terminate",
+        "totalMs": 5501.5
+      },
+      "tasWasmMoApresCorrections": 45,
+      "grosseAllocation": {
+        "statut": "ok",
+        "stdout": "400 Mo\n",
+        "erreur": null,
+        "dureeMs": 362.5,
+        "tasWasmMo": 438,
+        "arret": "normal",
+        "totalMs": 362.90000000596046
+      },
+      "erreursPage": []
+    },
+    {
+      "navigateur": "chromium",
+      "port": 8001,
+      "isolationOrigine": true,
+      "demarrageFroid": {
+        "loadPyodide": 2544.0750000029802,
+        "loadNumpy": 546.809999987483,
+        "importNumpy": 659,
+        "total": 3797.685000002384
+      },
+      "demarrageAvecCache": {
+        "loadPyodide": 2470.765000000596,
+        "loadNumpy": 424.47999998927116,
+        "importNumpy": 583.559999987483,
+        "total": 3510.8400000035763
+      },
+      "correction": {
+        "solution": {
+          "statut": "reussi",
+          "diagnostic": null,
+          "echecs": [],
+          "dureeMs": 71
+        },
+        "squelette": {
+          "statut": "echec",
+          "diagnostic": "w-jamais-mis-a-jour",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [0. 0.] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [0. 0.] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 11
+        },
+        "signeInverse": {
+          "statut": "echec",
+          "diagnostic": "signe-inverse",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [-0.25090793  0.5409796 ] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [1.56056043e+43 2.45530857e+43] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 12
+        },
+        "moyenneOubliee": {
+          "statut": "echec",
+          "diagnostic": "moyenne-oubliee",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 12.54539666 -27.04897981] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [nan nan] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 12
+        },
+        "facteur2Oublie": {
+          "statut": "echec",
+          "diagnostic": "facteur-2-oublie",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 0.12545397 -0.2704898 ] au lieu de [ 0.25090793 -0.5409796 ]"
+          ],
+          "dureeMs": 15
+        },
+        "erreurInconnue": {
+          "statut": "echec",
+          "diagnostic": null,
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 0.26090793 -0.5309796 ] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [ 2.05060358 -2.95804492] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 26
+        },
+        "fonctionAbsente": {
+          "statut": "echec",
+          "diagnostic": null,
+          "echecs": [
+            "test_renvoie_un_vecteur_de_la_bonne_forme : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'",
+            "test_premier_pas_correct : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'",
+            "test_converge_vers_la_solution : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'"
+          ],
+          "dureeMs": 5
+        }
+      },
+      "stdout": {
+        "statut": "ok",
+        "stdout": "bonjour\n2\n",
+        "erreur": null,
+        "dureeMs": 0.8499999940395355,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 1.135000005364418
+      },
+      "erreurSyntaxe": {
+        "statut": "erreur",
+        "stdout": "",
+        "erreur": {
+          "type": "SyntaxError",
+          "message": "invalid syntax (<apprenant>, line 2)",
+          "ligne": 2
+        },
+        "dureeMs": 1.9350000023841858,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 2.189999997615814
+      },
+      "erreurExecution": {
+        "statut": "erreur",
+        "stdout": "",
+        "erreur": {
+          "type": "ZeroDivisionError",
+          "message": "division by zero",
+          "ligne": 3
+        },
+        "dureeMs": 0.6749999970197678,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 0.9149999916553497
+      },
+      "reactivite": {
+        "frames": 180,
+        "maxGapMs": 16.670000000000073,
+        "dureePythonMs": 3001
+      },
+      "boucleInfinie": {
+        "statut": "interrompu",
+        "detail": "PythonError: Traceback (most recent call last):\n  File \"<exec>\", line 39, in run\n  File \"<exec>\", line 18, in _executer\n  File \"<apprenant>\", line 2, in <module>\nKeyboardInterrupt\n",
+        "dureeMs": 2001.9549999982119,
+        "tasWasmMo": 45,
+        "arret": "buffer",
+        "totalMs": 2002.2599999904633
+      },
+      "reutilisableApres": "encore là\n",
+      "boucleInfinieTerminate": {
+        "statut": "interrompu",
+        "redemarrageMs": 3026.280000001192,
+        "arret": "terminate",
+        "totalMs": 5026.460000008345
+      },
+      "reutilisableApresTerminate": "encore là\n",
+      "calculNumpyLong": {
+        "statut": "interrompu",
+        "redemarrageMs": 3060.5849999934435,
+        "arret": "terminate",
+        "totalMs": 6060.939999997616
+      },
+      "tasWasmMoApresCorrections": 45,
+      "grosseAllocation": {
+        "statut": "ok",
+        "stdout": "400 Mo\n",
+        "erreur": null,
+        "dureeMs": 274.1300000101328,
+        "tasWasmMo": 438,
+        "arret": "normal",
+        "totalMs": 274.3699999898672
+      },
+      "erreursPage": []
+    },
+    {
+      "navigateur": "firefox",
+      "port": 8000,
+      "isolationOrigine": false,
+      "demarrageFroid": {
+        "loadPyodide": 2438,
+        "loadNumpy": 477,
+        "importNumpy": 660,
+        "total": 3732
+      },
+      "demarrageAvecCache": {
+        "loadPyodide": 2446,
+        "loadNumpy": 501,
+        "importNumpy": 648,
+        "total": 3630
+      },
+      "correction": {
+        "solution": {
+          "statut": "reussi",
+          "diagnostic": null,
+          "echecs": [],
+          "dureeMs": 33
+        },
+        "squelette": {
+          "statut": "echec",
+          "diagnostic": "w-jamais-mis-a-jour",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [0. 0.] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [0. 0.] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 4
+        },
+        "signeInverse": {
+          "statut": "echec",
+          "diagnostic": "signe-inverse",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [-0.25090793  0.5409796 ] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [1.56056043e+43 2.45530857e+43] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 13
+        },
+        "moyenneOubliee": {
+          "statut": "echec",
+          "diagnostic": "moyenne-oubliee",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 12.54539666 -27.04897981] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [nan nan] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 15
+        },
+        "facteur2Oublie": {
+          "statut": "echec",
+          "diagnostic": "facteur-2-oublie",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 0.12545397 -0.2704898 ] au lieu de [ 0.25090793 -0.5409796 ]"
+          ],
+          "dureeMs": 27
+        },
+        "erreurInconnue": {
+          "statut": "echec",
+          "diagnostic": null,
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 0.26090793 -0.5309796 ] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [ 2.05060358 -2.95804492] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 17
+        },
+        "fonctionAbsente": {
+          "statut": "echec",
+          "diagnostic": null,
+          "echecs": [
+            "test_renvoie_un_vecteur_de_la_bonne_forme : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'",
+            "test_premier_pas_correct : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'",
+            "test_converge_vers_la_solution : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'"
+          ],
+          "dureeMs": 2
+        }
+      },
+      "stdout": {
+        "statut": "ok",
+        "stdout": "bonjour\n2\n",
+        "erreur": null,
+        "dureeMs": 1,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 1
+      },
+      "erreurSyntaxe": {
+        "statut": "erreur",
+        "stdout": "",
+        "erreur": {
+          "type": "SyntaxError",
+          "message": "invalid syntax (<apprenant>, line 2)",
+          "ligne": 2
+        },
+        "dureeMs": 1,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 1
+      },
+      "erreurExecution": {
+        "statut": "erreur",
+        "stdout": "",
+        "erreur": {
+          "type": "ZeroDivisionError",
+          "message": "division by zero",
+          "ligne": 3
+        },
+        "dureeMs": 1,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 1
+      },
+      "reactivite": {
+        "frames": 181,
+        "maxGapMs": 17.339999999999236,
+        "dureePythonMs": 3001
+      },
+      "boucleInfinie": {
+        "statut": "interrompu",
+        "redemarrageMs": 3611,
+        "arret": "terminate",
+        "totalMs": 5611
+      },
+      "reutilisableApres": "encore là\n",
+      "boucleInfinieTerminate": {
+        "statut": "interrompu",
+        "redemarrageMs": 3607,
+        "arret": "terminate",
+        "totalMs": 5607
+      },
+      "reutilisableApresTerminate": "encore là\n",
+      "calculNumpyLong": {
+        "statut": "interrompu",
+        "redemarrageMs": 3516,
+        "arret": "terminate",
+        "totalMs": 5516
+      },
+      "tasWasmMoApresCorrections": 45,
+      "grosseAllocation": {
+        "statut": "ok",
+        "stdout": "400 Mo\n",
+        "erreur": null,
+        "dureeMs": 272,
+        "tasWasmMo": 438,
+        "arret": "normal",
+        "totalMs": 274
+      },
+      "erreursPage": []
+    },
+    {
+      "navigateur": "firefox",
+      "port": 8001,
+      "isolationOrigine": true,
+      "demarrageFroid": {
+        "loadPyodide": 2443.66,
+        "loadNumpy": 484.94000000000005,
+        "importNumpy": 643.7599999999998,
+        "total": 3776.46
+      },
+      "demarrageAvecCache": {
+        "loadPyodide": 2506.1,
+        "loadNumpy": 477,
+        "importNumpy": 644.44,
+        "total": 3665.54
+      },
+      "correction": {
+        "solution": {
+          "statut": "reussi",
+          "diagnostic": null,
+          "echecs": [],
+          "dureeMs": 31
+        },
+        "squelette": {
+          "statut": "echec",
+          "diagnostic": "w-jamais-mis-a-jour",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [0. 0.] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [0. 0.] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 5
+        },
+        "signeInverse": {
+          "statut": "echec",
+          "diagnostic": "signe-inverse",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [-0.25090793  0.5409796 ] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [1.56056043e+43 2.45530857e+43] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 13
+        },
+        "moyenneOubliee": {
+          "statut": "echec",
+          "diagnostic": "moyenne-oubliee",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 12.54539666 -27.04897981] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [nan nan] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 13
+        },
+        "facteur2Oublie": {
+          "statut": "echec",
+          "diagnostic": "facteur-2-oublie",
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 0.12545397 -0.2704898 ] au lieu de [ 0.25090793 -0.5409796 ]"
+          ],
+          "dureeMs": 12
+        },
+        "erreurInconnue": {
+          "statut": "echec",
+          "diagnostic": null,
+          "echecs": [
+            "test_premier_pas_correct : après un pas, w vaut [ 0.26090793 -0.5309796 ] au lieu de [ 0.25090793 -0.5409796 ]",
+            "test_converge_vers_la_solution : après 500 pas, w vaut [ 2.05060358 -2.95804492] au lieu de [ 2. -3.]"
+          ],
+          "dureeMs": 14
+        },
+        "fonctionAbsente": {
+          "statut": "echec",
+          "diagnostic": null,
+          "echecs": [
+            "test_renvoie_un_vecteur_de_la_bonne_forme : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'",
+            "test_premier_pas_correct : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'",
+            "test_converge_vers_la_solution : AttributeError : 'types.SimpleNamespace' object has no attribute 'descente_gradient'"
+          ],
+          "dureeMs": 3
+        }
+      },
+      "stdout": {
+        "statut": "ok",
+        "stdout": "bonjour\n2\n",
+        "erreur": null,
+        "dureeMs": 0.5599999999999454,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 0.8200000000001637
+      },
+      "erreurSyntaxe": {
+        "statut": "erreur",
+        "stdout": "",
+        "erreur": {
+          "type": "SyntaxError",
+          "message": "invalid syntax (<apprenant>, line 2)",
+          "ligne": 2
+        },
+        "dureeMs": 0.900000000000091,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 1.1199999999998909
+      },
+      "erreurExecution": {
+        "statut": "erreur",
+        "stdout": "",
+        "erreur": {
+          "type": "ZeroDivisionError",
+          "message": "division by zero",
+          "ligne": 3
+        },
+        "dureeMs": 0.9800000000000182,
+        "tasWasmMo": 45,
+        "arret": "normal",
+        "totalMs": 1.4800000000000182
+      },
+      "reactivite": {
+        "frames": 181,
+        "maxGapMs": 17.200000000000728,
+        "dureePythonMs": 3001
+      },
+      "boucleInfinie": {
+        "statut": "interrompu",
+        "detail": "PythonError: Traceback (most recent call last):\n  File \"<exec>\", line 39, in run\n  File \"<exec>\", line 18, in _executer\n  File \"<apprenant>\", line 2, in <module>\nKeyboardInterrupt\n",
+        "dureeMs": 2006.5199999999995,
+        "tasWasmMo": 45,
+        "arret": "buffer",
+        "totalMs": 2007.04
+      },
+      "reutilisableApres": "encore là\n",
+      "boucleInfinieTerminate": {
+        "statut": "interrompu",
+        "redemarrageMs": 3542.3200000000015,
+        "arret": "terminate",
+        "totalMs": 5546.039999999999
+      },
+      "reutilisableApresTerminate": "encore là\n",
+      "calculNumpyLong": {
+        "statut": "interrompu",
+        "redemarrageMs": 3560.5800000000017,
+        "arret": "terminate",
+        "totalMs": 6561.420000000002
+      },
+      "tasWasmMoApresCorrections": 45,
+      "grosseAllocation": {
+        "statut": "ok",
+        "stdout": "400 Mo\n",
+        "erreur": null,
+        "dureeMs": 272.77999999999975,
+        "tasWasmMo": 438,
+        "arret": "normal",
+        "totalMs": 273.1000000000022
+      },
+      "erreursPage": []
+    }
+  ]
+}
