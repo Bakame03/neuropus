@@ -17,3 +17,9 @@ neuropus veut combler ce vide : une progression continue et exigeante.
 ## Auteur
 
 Aldo Alex Nganji · [GitHub](https://github.com/Bakame03) · [LinkedIn](https://www.linkedin.com/in/aldo-alex-nganji-550072383)
+
+## Développement
+
+Installation, commandes et conventions : voir [`CLAUDE.md`](CLAUDE.md).
+Avancement : [`BACKLOG.md`](BACKLOG.md) et [`PROGRESS.md`](PROGRESS.md).
+Choix techniques : [`DECISIONS.md`](DECISIONS.md).

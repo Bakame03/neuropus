@@ -244,3 +244,35 @@ Une entrée par décision structurante. Statuts : **Validé** (tranché par Aldo
   figée, pas de dépendance à la disponibilité d'un tiers.
 - **Ce qu'on perd :** 16 Mo de fichiers statiques à servir et à mettre à jour
   nous-mêmes ; pas de cache partagé avec d'autres sites.
+
+## D-016 — Outillage : npm ≥ 10, Vitest, oxlint, Prisma 7
+
+- **Statut :** Décidé par Claude sur délégation (D-013), 2026-10-01
+- **npm :** le npm 9.2 fourni par Ubuntu plante sur les workspaces
+  (« Cannot read properties of null (reading 'edgesOut') »). npm 11 a été
+  installé dans `~/.local` (sans sudo) et le dépôt exige npm ≥ 10. Alternative
+  écartée : pnpm, qui aurait ajouté un outil de plus à apprendre.
+- **Vitest et oxlint :** ce sont les choix par défaut du gabarit NestJS 12 et
+  du gabarit Vite. Les garder donne le même outil de test et de lint des deux
+  côtés. Ce qu'on perd : Jest et ESLint, plus documentés.
+- **Prisma 7.10 :** dernière version stable. La 8 n'existe qu'en préversion.
+  Prisma 7 impose un adaptateur de pilote (`@prisma/adapter-pg`), un fichier
+  `prisma.config.ts`, et génère le client dans `src/generated/` (ignoré par
+  Git, régénéré avant chaque build).
+- **Scripts d'installation :** npm 11 bloque par défaut les scripts des
+  dépendances ; ceux de `prisma` et `@prisma/engines` ont été approuvés
+  (liste `allowScripts` dans `package.json`).
+
+## D-017 — Front et API sur une même origine, API sous `/api`
+
+- **Statut :** Décidé par Claude sur délégation (D-013), 2026-10-01
+- **Options :** deux origines avec CORS ; une seule origine avec un préfixe.
+- **Choix :** toutes les routes de l'API sont sous `/api`. En développement,
+  Vite relaie `/api` vers NestJS ; en production, un même serveur ou un
+  reverse proxy fera de même.
+- **Pourquoi :** pas de configuration CORS, cookies de session same-site
+  (D-011) sans réglage particulier, et compatible avec l'isolation d'origine
+  exigée par l'exécuteur Python (D-014).
+- **Ce qu'on perd :** on ne peut pas héberger le front sur un CDN d'un autre
+  domaine sans réintroduire CORS.
+

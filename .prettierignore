@@ -1,0 +1,8 @@
+node_modules
+dist
+package-lock.json
+prototypes
+content
+*.md
+apps/api/src/generated
+apps/api/prisma/migrations

@@ -1,3 +1,7 @@
 node_modules/
+dist/
+.env
+*.tsbuildinfo
+apps/api/src/generated/
 prototypes/pyodide/vendor/
 prototypes/pyodide/results.log

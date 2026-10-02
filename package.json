@@ -1,0 +1,32 @@
+{
+  "name": "neuropus",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "dev:api": "npm run start:dev -w api",
+    "dev:web": "npm run dev -w web",
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspaces",
+    "test:e2e": "npm run test:e2e -w api",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "db:migrate": "npm run db:migrate -w api",
+    "db:deploy": "npm run db:deploy -w api"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2"
+  },
+  "packageManager": "npm@11.21.0",
+  "allowScripts": {
+    "@prisma/engines@7.10.0": true,
+    "prisma@7.10.0": true
+  }
+}

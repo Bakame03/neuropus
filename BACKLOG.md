@@ -10,7 +10,7 @@ Découpage adopté le 2026-10-01 sur délégation (D-013).
 |---|---|---|---|
 | INC-00 | Cadrage : fichiers de suivi et découpage | — | fait |
 | INC-01 | Prototype jetable Python + numpy dans le navigateur | — | fait |
-| INC-02 | Socle technique du dépôt | INC-01 | à faire |
+| INC-02 | Socle technique du dépôt | INC-01 | fait |
 | INC-03 | Schéma de données validé et migré | INC-02 | à faire |
 | INC-04 | Format de contenu, validateur, deux notions d'exemple | INC-01, INC-03 | à faire |
 | INC-05 | Import du contenu en base | INC-04 | à faire |
@@ -69,14 +69,17 @@ viable. Risque numéro un du projet. Code dans `prototypes/`, jeté ensuite.
 
 **Objectif :** un dépôt où `api` et `web` démarrent, se parlent et sont testés.
 
-- [ ] Monorepo avec `apps/api` (NestJS), `apps/web` (React + Vite),
-      `packages/content`.
-- [ ] PostgreSQL local accessible, première migration vide appliquée.
-- [ ] Une route de santé de l'API répond et vérifie la connexion à la base ;
+- [x] Monorepo avec `apps/api` (NestJS) et `apps/web` (React + Vite).
+      `packages/content` est reporté à INC-04 pour ne pas créer un paquet vide.
+- [x] Première migration vide appliquée. *(Vérifié sur une instance
+      PostgreSQL temporaire ; la base locale d'Aldo attend la création du
+      rôle `neuropus`, commande dans `CLAUDE.md`.)*
+- [x] Une route de santé de l'API répond et vérifie la connexion à la base ;
       le front l'affiche.
-- [ ] Lint, formatage et tests se lancent par une commande chacun.
-- [ ] CI qui exécute lint et tests à chaque push.
-- [ ] Section « Commandes utiles » de `CLAUDE.md` remplie.
+- [x] Lint, formatage et tests se lancent par une commande chacun.
+- [ ] CI qui exécute lint et tests à chaque push. *(Fichier écrit, jamais
+      exécuté : il tournera au premier push.)*
+- [x] Section « Commandes utiles » de `CLAUDE.md` remplie.
 
 ## INC-03 — Schéma de données
 

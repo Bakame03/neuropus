@@ -1,0 +1,9 @@
+// Le schéma métier arrive à INC-03. Ce fichier ne fait que brancher Prisma.
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}

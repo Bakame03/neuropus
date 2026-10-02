@@ -130,20 +130,24 @@ planning de révision. Le schéma est écrit et expliqué à l'incrément INC-03
 | Contenu | Fichiers Markdown/YAML/.py dans Git, importés en base | Validé | D-003 |
 | Python navigateur | Pyodide dans un Web Worker, auto-hébergé | Confirmé par INC-01 | D-006, D-014, D-015 |
 | Répétition espacée | FSRS (bibliothèque `ts-fsrs`) | Décidé | D-007 |
-| ORM | Prisma | Décidé | D-009 |
-| Dépôt | Monorepo npm workspaces | Décidé | D-010 |
+| ORM | Prisma 7 (adaptateur `pg`) | Décidé | D-009 |
+| Dépôt | Monorepo npm workspaces, npm ≥ 10 | Décidé | D-010, D-016 |
+| Outillage | Vitest, oxlint, Prettier | Décidé | D-016 |
 | Authentification | Email + mot de passe, cookie de session | Décidé | D-011 |
 | Correction | Dans le navigateur, sans vérification serveur | Décidé, à revoir avant tout certificat | D-012 |
 
-Structure cible du dépôt (créée à INC-02, pas avant) :
+Structure du dépôt :
 
 ```
-apps/api/          NestJS
-apps/web/          React + Vite
-packages/content/  schéma et validateur du format de contenu (partagé)
-content/           notions, leçons, exercices rédigés par Aldo
+apps/api/          NestJS 12 (ESM), Prisma 7, tests Vitest
+apps/web/          React 19 + Vite, tests Vitest + Testing Library
+packages/content/  schéma et validateur du format de contenu (créé à INC-04)
+content/           notions, leçons, exercices rédigés par Aldo (créé à INC-04)
 prototypes/        code jetable (INC-01), jamais importé par apps/
 ```
+
+L'API est servie sous `/api`. En développement, Vite relaie `/api` vers le
+port 3000 : front et API partagent une origine (D-017).
 
 ## Conventions de code
 
@@ -160,8 +164,32 @@ prototypes/        code jetable (INC-01), jamais importé par apps/
 
 ## Commandes utiles
 
-Pas encore de code applicatif : cette section sera remplie à INC-02 (lancer,
-tester, migrer, importer le contenu).
+Toutes depuis la racine du dépôt. npm 10 ou plus est requis : le npm 9.2
+d'Ubuntu plante sur les workspaces (D-016).
+
+Première installation :
+
+```bash
+sudo -u postgres psql -c "CREATE ROLE neuropus LOGIN PASSWORD 'neuropus' CREATEDB" \
+                      -c "CREATE DATABASE neuropus OWNER neuropus"
+cp apps/api/.env.example apps/api/.env
+npm install
+npm run db:deploy
+```
+
+Au quotidien :
+
+| Commande | Effet |
+|---|---|
+| `npm run dev:api` | API sur http://localhost:3000/api, rechargée à chaud |
+| `npm run dev:web` | Front sur http://localhost:5173 |
+| `npm test` | Tests unitaires (API et front) |
+| `npm run test:e2e` | Tests de l'API contre la vraie base |
+| `npm run lint` | oxlint sur les deux applications |
+| `npm run format` / `format:check` | Prettier |
+| `npm run build` | Compilation de production |
+| `npm run db:migrate` | Crée et applique une migration après modification du schéma |
+| `npm run db:deploy` | Applique les migrations existantes |
 
 Prototype jetable (voir `prototypes/pyodide/README.md`) :
 
@@ -170,7 +198,3 @@ cd prototypes/pyodide
 node server.mjs     # http://localhost:8001/?manuel
 node measure.mjs    # mesures Chromium + Firefox, écrit results.json
 ```
-
-Environnement constaté le 2026-10-01 : Node 22.22 et npm 9.2 installés ; ni
-Docker, ni PostgreSQL, ni pnpm. PostgreSQL (ou Docker) est à installer avant
-INC-02.

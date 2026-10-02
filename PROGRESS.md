@@ -4,6 +4,53 @@ Une entrée datée par incrément, la plus récente en haut.
 
 ---
 
+## 2026-10-01 — INC-02 Socle technique (fait, deux points à confirmer)
+
+**Fait**
+
+- Monorepo npm workspaces : `apps/api` (NestJS 12, ESM, Prisma 7) et
+  `apps/web` (React 19, Vite 8).
+- API : module Prisma global, route `GET /api/health` qui interroge la base
+  (200 si elle répond, 503 sinon).
+- Front : page provisoire qui affiche l'état de la chaîne front → API → base.
+- Première migration (vide) et scripts `db:migrate` / `db:deploy`.
+- Scripts racine : `dev:api`, `dev:web`, `build`, `lint`, `test`, `test:e2e`,
+  `format`, `format:check`.
+- Workflow GitHub Actions `.github/workflows/ci.yml`.
+- Gabarits nettoyés : plus aucun contenu de démonstration NestJS ou Vite.
+
+**Testé**
+
+- `npm test` : 2 tests API (santé ok, santé 503) et 3 tests front (ok, base
+  injoignable, API injoignable), tous verts.
+- `npm run test:e2e` : `GET /api/health` contre une vraie base, vert.
+- `npm run build`, `lint`, `format:check` : verts.
+- À la main : API et Vite lancés, `/api/health` appelé à travers le proxy du
+  front → 200 ; base arrêtée → 503 `base: injoignable` ; base relancée → 200
+  sans redémarrer l'API.
+
+**En suspens**
+
+- La base utilisée pour ces vérifications est une instance PostgreSQL 18
+  temporaire lancée sans sudo sur le port 5433, supprimée depuis. Sur le
+  PostgreSQL installé par Aldo (port 5432), le rôle `neuropus` n'existe pas
+  encore : commande de création dans `CLAUDE.md`, puis `npm run db:deploy`.
+- La CI n'a jamais tourné : à vérifier au premier push.
+
+**Pièges rencontrés**
+
+- npm 9.2 (paquet Ubuntu) plante sur les workspaces. npm 11 installé dans
+  `~/.local/bin`, qui passe avant `/usr/bin` dans le PATH (D-016).
+- npm 11 bloque les scripts d'installation des dépendances : il a fallu
+  approuver ceux de Prisma, sans quoi le moteur n'est pas installé.
+- Prisma 7 ne lit plus `.env` tout seul et n'accepte plus l'URL dans
+  `schema.prisma` : elle est dans `prisma.config.ts`, chargée par `dotenv`.
+- `nest build` produit `dist/main.js`, pas `dist/src/main.js`.
+- `sudo` ne fonctionne pas depuis la session Claude (pas de terminal) : toute
+  commande sudo doit être lancée par Aldo dans son propre terminal.
+
+---
+
 ## 2026-10-01 — INC-01 Prototype Python + numpy dans le navigateur (fait)
 
 **Verdict : Pyodide est viable. Le plan B (exécution serveur) n'est pas
